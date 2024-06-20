@@ -1,11 +1,10 @@
-package Exercises;
+package exercises;
 
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 import io.restassured.RestAssured;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class ParsingJSONEx5 {
     @Test

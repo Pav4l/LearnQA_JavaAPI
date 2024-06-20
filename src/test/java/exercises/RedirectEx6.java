@@ -1,4 +1,4 @@
-package Exercises;
+package exercises;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
