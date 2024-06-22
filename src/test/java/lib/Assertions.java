@@ -29,4 +29,8 @@ public class Assertions {
                 "Response status code is not expected"
         );
     }
+
+    public static void assertJsonHasKey(Response Response, String ExpectedFiledName){
+        Response.then().assertThat().body("$", hasKey(ExpectedFiledName));
+    }
 }
