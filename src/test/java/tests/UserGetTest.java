@@ -27,10 +27,11 @@ public class UserGetTest extends BaseTestCase {
         Map<String, String> authData = new HashMap<>();
         authData.put("email","vinkotov@example.com");
         authData.put("password", "1234");
+
         Response responseGetAuth = RestAssured
                 .given()
                 .body(authData)
-                .post("https://playground.learnqa.ru/api/user/2")
+                .post("https://playground.learnqa.ru/api/user/login")
                 .andReturn();
 
         String header = this.getHeader(responseGetAuth, "x-csrf-token");
@@ -43,7 +44,7 @@ public class UserGetTest extends BaseTestCase {
                 .get("https://playground.learnqa.ru/api/user/2")
                 .andReturn();
 
-        String[] expectedFields = {"username", "firstname", "lastname", "email"};
+        String[] expectedFields = {"username", "firstName", "lastName", "email"};
         Assertions.assertJsonHasFields(responseUserData, expectedFields);
     }
 }
