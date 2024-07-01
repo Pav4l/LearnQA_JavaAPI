@@ -4,6 +4,7 @@ import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class DataGenerator {
     public static String getRandomEmail(){
@@ -35,5 +36,20 @@ public class DataGenerator {
             }
         }
         return userData;
+    }
+
+    public static String generateRandomString(int length) {
+        int leftLimit = 97; // символ 'a'
+        int rightLimit = 122; // символ 'z'
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            int randomLimitedInt = leftLimit + (int)
+                    (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+
+        return buffer.toString();
     }
 }
