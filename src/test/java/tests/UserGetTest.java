@@ -3,8 +3,8 @@ package tests;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.BaseTestCase;
-import lib.Assertions;
 import lib.ApiCoreRequests;
+import lib.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
