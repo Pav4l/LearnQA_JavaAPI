@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.BaseTestCase;
@@ -23,6 +21,8 @@ public class UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test attempts to delete user with ID 2 and expects failure")
     @DisplayName("Negative: Delete user with ID 2")
+    @Severity(SeverityLevel.CRITICAL)
+    @Issue("PROJECT-138")
     public void testDeleteUserWithId2() {
         //Login as user with ID 2
         Map<String, String> authData = new HashMap<>();
@@ -50,6 +50,8 @@ public class UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test creates and deletes a new user and verifies the deletion")
     @DisplayName("Positive: Create and delete user")
+    @Severity(SeverityLevel.NORMAL)
+    @Issue("PROJECT-139")
     public void testCreateAndDeleteUser() {
         //Create user
         Map<String, String> userData = new HashMap<>();
@@ -94,6 +96,8 @@ public class UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test removes a user who is logged in as another user")
     @DisplayName("Negative: Delete another user")
+    @Severity(SeverityLevel.CRITICAL)
+    @Issue("PROJECT-140")
     public void testEditAnotherUser() {
 
         //Generate user

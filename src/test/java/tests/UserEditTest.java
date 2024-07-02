@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -8,15 +9,22 @@ import lib.Assertions;
 import lib.BaseTestCase;
 import lib.DataGenerator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Epic("User editing")
+@Feature("Edit user details")
 public class UserEditTest extends BaseTestCase {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
     @Test
+    @DisplayName("Test editing user details immediately after creation")
+    @Description("This test verifies editing user details immediately after creation")
+    @Severity(SeverityLevel.NORMAL)
+    @Issue("PROJECT-133")
     public void testEditJustCreatedTest(){
         //GENERATE USER
         Map<String,String> userData = DataGenerator.getRegistrationData();
@@ -66,6 +74,10 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @DisplayName("Test editing user details without authentication")
+    @Description("This test verifies behavior when trying to edit user details without authentication")
+    @Severity(SeverityLevel.MINOR)
+    @Issue("PROJECT-134")
     public void testEditUserNotAuth() {
         Map<String, String> userData = DataGenerator.getRegistrationData();
         Response responseCreateUser = apiCoreRequests.makePostRequestCreateUser(
@@ -89,6 +101,10 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @DisplayName("Test editing user details as another authenticated user")
+    @Description("This test verifies behavior when trying to edit user details as another authenticated user")
+    @Severity(SeverityLevel.CRITICAL)
+    @Issue("PROJECT-135")
     public void testEditUserAuthAsAnotherUser() {
         Map<String, String> userData1 = DataGenerator.getRegistrationData();
         Response responseCreateUser1 = apiCoreRequests.makePostRequestCreateUser(
@@ -130,6 +146,10 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @DisplayName("Test editing user email to invalid format")
+    @Description("This test verifies behavior when trying to edit user email to an invalid format")
+    @Severity(SeverityLevel.NORMAL)
+    @Issue("PROJECT-136")
     public void testEditUserEmailToInvalid() {
         Map<String, String> userData = DataGenerator.getRegistrationData();
         Response responseCreateUser = apiCoreRequests.makePostRequestCreateUser(
@@ -164,6 +184,10 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @DisplayName("Test editing user first name to a too short value")
+    @Description("This test verifies behavior when trying to edit user first name to a too short value")
+    @Severity(SeverityLevel.BLOCKER)
+    @Issue("PROJECT-137")
     public void testEditUserFirstNameToShort() {
         Map<String, String> userData = DataGenerator.getRegistrationData();
         Response responseCreateUser = apiCoreRequests.makePostRequestCreateUser(
